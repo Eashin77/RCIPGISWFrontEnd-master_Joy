@@ -1,0 +1,262 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+        Launch demo modal
+    </button>*@
+
+<div class="modal fade" tabindex="-1" id="kt_modal_1">
+    <div class="modal-dialog modal-lg " style="min-width:90%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">General Information</h3>
+
+                <!--begin::Close-->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="svg-icon svg-icon-1"></span>
+                </div>
+                <!--end::Close-->
+            </div>
+
+            <div class="modal-body ">
+                <div>
+                    <table class="table table-bordered table-striped " id="roadGenInfo">
+                        <thead class="text-center" id="roadGenInfoHead">
+                            <tr>
+                                <th>Segment Si No</th>
+                                <th colspan="2">Chainage</th>
+                                <th>Segment Length</th>
+                                <th>Surface Type</th>
+                                <th colspan="3">Average Width</th>
+                                <th colspan="2">Condition</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>From:</th>
+                                <th>To:</th>
+                                <th></th>
+                                <th></th>
+                                <th>Chainage</th>
+                                <th>Shoulder(left)</th>
+                                <th>Shoulder(Right)</th>
+                                <th>Shoulder</th>
+                                <th>Slope</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="roadGenInfoRow">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--end::Toolbar-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container-xxl">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            Road Inventory Basic Information
+                            <span class="d-block text-muted pt-2 font-size-sm">Sorting & pagination remote datasource</span>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-xxl">
+                            <table class="display nowrap" style="width:100%" id="roadInventoryDataTable">
+                                <thead id="roadInventory">
+                                    <tr>
+                                        <th scope="col">Road Code</th>
+                                        <th scope="col">Road Sl No</th>
+                                        <th scope="col">Road Id</th>
+                                        <th scope="col">Road Type</th>
+                                        <th scope="col">Road Name</th>
+                                        <th scope="col">Road Length</th>
+                                        <th scope="col">Crestwidth</th>
+                                        <th scope="col">EMBKHEIGHT</th>
+                                        @*<th scope="col">Is This Road Important</th>*@
+                                        <th scope="col">IRI</th>
+                                        <th scope="col">Deflection</th>
+                                        <th scope="col">AADT</th>
+                                        <th scope="col">CVD</th>
+                                        <th scope="col">Segment Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                @*<tbody id="roadInventory2">
+                                    </tbody>*@
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+            $(document).ready(function ()
+            {
+
+                var apiBaseUrl = "http://dev.betsbd.com:3015/rsdmsbe/";
+                @*var userLocation = @Html.Raw(Json.Encode(@ViewBag.UserLocation));*@ //Accessing the Json Object from ViewBag
+               /* var r = _.keys(_.countBy(userLocation, function (userLocation) { return userLocation.DivisionId; }));*/
+
+
+
+
+                $("#roadInventoryDataTable").DataTable({
+                    lengthMenu: [
+                        [20, 25, 50, -1],
+                        [25, 50, 100,200],
+                    ],
+                    "ajax":
+                    {
+                        "url": apiBaseUrl + 'api/RoadInventory',
+                        "type": "GET",
+                        dataSrc: ''
+                    },
+                    columns: [
+                        { data: 'ROADCODE' },
+                        { data: 'ROADSLNO' },
+                        { data: 'ROADID' },
+                        { data: 'ROADTYPEINFO' },
+                        { data: 'ROADNAME' },
+                        { data: 'ROADLENGTH' },
+                        { data: 'CRESTWIDTH' },
+                        { data: 'EMBKHEIGHT' },
+                        { data: 'IRI' },
+                        { data: 'DEFLECTION' },
+                        { data: 'AADT_MT' },
+                        { data: 'CVD' },
+                        { data: 'SEGMENTSTATUS' },
+                        {data: null}
+                    ],
+                    columnDefs: [{
+                        targets: -1, // Target the last column
+                        data: null, // Use the whole row object as the data source
+                        render: function (data, type, row) {
+                            // Create the button element with a class
+                            return '<button class="btn btn-success opacity-75" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">'+
+                                    '<i class="fa fa-ellipsis-v"></i>'+
+                                '</button>'+
+                                '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="background-color: #9ad6b7;">'+
+                                '<li><button class="dropdown-item btnModal" id="roadAttribute" data-bs-toggle="modal" data-bs-target="#kt_modal_1" >Road Attributes</a></li>'+
+                                    '<li><a class="dropdown-item" href="">Traffic Survey</a></li>'+
+                                    '<li><a class="dropdown-item" href="">Condition Survey</a></li>'+
+                                    '<li><a class="dropdown-item" href="">Pavement Inventory</a></li>'+
+                                    '<li><a class="dropdown-item" href="">Structure Inventory</a></li>'+
+                                    '<li><a class="dropdown-item" href="">Photo Gallery</a></li>'+
+                            '</ul>';
+
+                            //'<i class="fa fa-ellipsis-v" href="#" role="Button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" ></i>' +
+                            //    '<ul class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuLink">' +
+                            //    '<li><a class="dropdown-item "  role="Button" id="roadAttribute" href="#">ROAD ATTRIBUTES</a></li>' +
+                            //    '<li><a class="dropdown-item" type="Button" id="trafficSurvey" href="#">TRAFFIC SURVEY</a></li>' +
+                            //    '<li><a class="dropdown-item" id="conditionSurvey" href="#">CONDITION SURVEY</a></li>' +
+                            //    '<li><a class="dropdown-item" id="pavementInventory" href="#">PAVEMENT INVENTORY</a></li>' +
+                            //    '<li><a class="dropdown-item" id="structureInventory" href="#">STRUCTURE INVENTORY</a></li>' +
+                            //    '<li><a class="dropdown-item" id="photoInventory" href="#">PHOTO GALLERY INVENTORY</a></li>' +
+                            //    '</ul>';
+                        }
+                    }],
+                    processing: true,
+                    paging: true,
+                    ordering: false,
+                    info: false,
+                    scrollY: 300,
+                    scrollX:true,
+                    responsive: true,
+                });
+
+
+                // Function to handle cell click event
+                function handleCellClick() {
+                    // Get the row containing the clicked button
+                    var row = $(this).closest('tr');
+
+                    // Get the value of the third column in the row
+                    var roadID = row.find('td:eq(2)').text();
+
+
+
+                    // Do something with the cell value
+                    console.log('Road Id:', roadID);
+
+                    $.ajax({
+                        url: apiBaseUrl + 'api/RoadGeneralInfo/' + roadID,
+                        method: 'GET',
+                        success: function (data) {
+                            
+                            console.log(data);
+                            $('#roadGenInfoRow').empty();
+                            for (var i = 0; i <= data.length; i++)
+                            {
+                                var TOCHAIN="";
+                                var FROMCHAIN="";
+                                var result = data[i].TOCHAIN - data[i].FROMCHAIN;
+                                $("#roadGenInfoRow").append(
+                                    '<tr>' +
+                                    '<td>' + data[i].RDSECSLNO + '</td>' +
+                                    '<td>' + data[i].FROMCHAIN + '</td>' +
+                                    '<td>' + data[i].TOCHAIN + '</td>' +
+
+                                    '<td>' + result  + '</td>' +
+
+                                    '<td>' +
+                                    '<select>' +
+                                    '<option>' + data[i].SURFTYPE + '</option>' +
+                                    '</select >' +
+                                    '</td >' +
+
+                                    '<td>' + '' + '</td>' +
+
+                                    '<td>' + data[i].AVGSHOULW_L + '</td>' +
+                                    '<td>' + data[i].AVGSHOULW_R + '</td>' +
+                                    '<td>' +
+                                    '<select>' +
+                                    '<option>' + data[i].SHOULCON + '</option>' +
+                                    '</select >' +
+                                    '</td >' +
+                                    '<td>' +
+                                    '<select>' +
+                                    '<option>' + data[i].SLOPECON + '</option>' +
+                                    '</select >' +
+                                    '</td >' +
+
+                                    '</tr>'
+                                );
+                               
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle the error
+                            console.log(error);
+                        }
+                    });
+
+                }
+
+                // Event delegation for table cells
+                $('#roadInventoryDataTable').on('click', '#roadAttribute', handleCellClick);
+
+            });
+
+    </script>
+}
+
+
+

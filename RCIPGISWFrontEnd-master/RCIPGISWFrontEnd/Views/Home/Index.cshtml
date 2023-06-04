@@ -1,0 +1,326 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--end::Toolbar-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container-xxl">
+            <!--begin::Mixed Widget 2-->
+            <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                <!--begin::Body-->
+                <div class="card-body p-0 d-flex flex-column overflow-hidden">
+                    <!--begin::Hidden-->
+                    <div class="d-flex flex-stack flex-wrap flex-grow-1 px-9 py-3 bg-primary">
+                        <!--begin::Page title-->
+
+                        <div class="d-flex align-items-center justify-content-lg-start my-1">
+                            <span class="text-dark fw-bolder fs-3 ">Dashboard</span>
+                        </div>
+                        <!--end::Title-->
+                        <!--end::Page title-->
+                    </div>
+                    <!--end::Hidden-->
+
+                </div>
+                <!--end::Body-->
+            </div>
+            <!--begin::Row-->
+            <!--begin::Mixed Widget 2-->
+            <div class="card card-xxl-stretch mb-5 mb-xl-8 p-5">
+
+                <div class="row gy-5 g-xl-8">
+                    <div class="col-xl-2">
+                        <div>Division</div>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="divisionDropdown">
+                            <option selected>-- Select</option>
+                            <option value="1">Dhaka</option>
+                            <option value="2">Rangpur</option>
+                            <option value="3">Rajshahi</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-2">
+                        <div>Region</div>
+                        <div>
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>-- Select</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div>Districts</div>
+                        <div>
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>-- Select</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div>Upazila</div>
+                        <div>
+                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>-- Select</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 d-flex align-items-end">
+                        <div>
+                            <button type="button" class="btn btn-primary btn-sm d-flex align-items-center">
+                                <span><i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-sm" style="color: #ffffff;"></i></span>
+                                <span class="px-2">Filter</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--end::Mixed Widget 2-->
+            <!--begin::Mixed Widget 2-->
+            <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                <!--begin::Body-->
+                <div class="card-body p-0 d-flex flex-column overflow-hidden">
+                    <!--begin::Hidden-->
+                    <div class="d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-3 pb-3 bg-primary">
+                        <div class="me-2">
+                            <span class="fw-bolder text-gray-800 d-block fs-3">Road Network- At a Glance</span>
+                        </div>
+                    </div>
+                    <!--end::Hidden-->
+                    <div class="row gy-5 g-xl-8 p-5" id="roadAtAGlance">
+
+                    </div>
+                </div>
+                <!--end::Body-->
+            </div>
+
+            <!--begin::Row-->
+            <div class="row gy-5 g-xl-8">
+                <!--begin::Col-->
+                <div class="col-xl-6">
+                    <!--begin::Mixed Widget 10-->
+                    <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                        <!--begin::Body-->
+                        <div class="card-body p-0 d-flex flex-column overflow-hidden">
+                            <!--begin::Hidden-->
+                            <div class="d-flex flex-stack flex-wrap flex-grow-1 px-3 pt-3 pb-3 bg-primary">
+                                <div class="d-flex flex-row align-items-center">
+                                    <span><i class="fa-solid fa-chart-pie fa-xl " style="color: #411f51;"></i></span>
+                                    <span class="fw-bolder text-gray-800 d-block fs-3 px-2">Road Network By Road Type</span>
+                                </div>
+                            </div>
+                            <!--end::Hidden-->
+                            <!--begin::Chart-->
+                            <div class="card-rounded-bottom" id="roadTypePie" data-kt-color="primary"></div>
+                            <!--end::Chart-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Mixed Widget 10-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-xl-6">
+                    <!--begin::Mixed Widget 10-->
+                    <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                        <!--begin::Body-->
+                        <div class="card-body p-0 d-flex flex-column overflow-hidden">
+                            <!--begin::Hidden-->
+                            <div class="d-flex flex-stack flex-wrap flex-grow-1 px-3 pt-3 pb-3 bg-primary">
+                                <div class="d-flex flex-row align-items-center">
+                                    <span><i class="fa-solid fa-chart-pie fa-xl " style="color: #411f51;"></i></span>
+                                    <span class="fw-bolder text-gray-800 d-block fs-3 px-2">Road Network By Surface Type</span>
+                                </div>
+                            </div>
+                            <!--end::Hidden-->
+                            <!--begin::Chart-->
+                            <div class="card-rounded-bottom" id="roadSurfaceTypePie" data-kt-color="primary"></div>
+                            <!--end::Chart-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Mixed Widget 10-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+            <!--begin::Mixed Widget 10-->
+            <div class="card card-xxl-stretch-50 mb-5 mb-xl-8">
+                <!--begin::Body-->
+                <div class="card-body p-0 d-flex justify-content-between flex-column overflow-hidden">
+                    <!--begin::Hidden-->
+                    <div class="d-flex flex-stack flex-wrap flex-grow-1 px-3 pt-3 pb-3 bg-primary">
+                        <div class="d-flex flex-row align-items-center">
+                            <span><i class="fa-solid fa-chart-column fa-xl" style="color: #204688;"></i></span>
+                            <span class="fw-bolder text-gray-800 d-block fs-3 px-2">Traffic Composition</span>
+                        </div>
+                    </div>
+                    <!--end::Hidden-->
+                    <!--begin::Chart-->
+                    <div class="card-rounded-bottom" id="trafficComposeNewBarchart" data-kt-color="primary"></div>
+                    <!--end::Chart-->
+                </div>
+            </div>
+            <!--end::Mixed Widget 10-->
+            @*<div id="updatePanel" style="padding:20px;"></div>*@
+
+        </div>
+    </div>
+
+</div>
+<!--end::Content-->
+<!--Script ajax loading grid data-->
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var apiBaseUrl = "http://dev.betsbd.com:3015/rsdmsbe/";
+            var userLocation = @Html.Raw(Json.Encode(@ViewBag.UserLocation)); //Accessing the Json Object from ViewBag
+            var r = _.keys(_.countBy(userLocation, function (userLocation) { return userLocation.DivisionId; }));
+            console.log(r)
+            $.ajax({
+                type: "GET",
+                url: apiBaseUrl + 'api/RoadCountByPaved',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    
+                    $.each(data, function (index, value) {
+                        color = ["#009ce9", "#7a6e66", "#ff00a0", "#647f5f"]
+                        var pavementPercentage = Math.ceil(parseInt(value.surfaceLength) / parseInt(value.roadLength) * 100);
+                        $("#roadAtAGlance").append(
+                            '<div class="col-xl-3">'+
+                            '<div class= "mb-4 d-flex flex-row justify-content-between align-items-center" >' +
+                            '<div>' +
+                            '<div class="text-dark fw-bolder fs-5">' + value.roadTypeName + '</div>' +
+                            '<div style="color:' + color[index] +'"> ' + value.roadCount + ' Number</div> ' +
+                            '</div> ' +
+                            '<div class= "fs-2" style="color:' + color[index] +'">' + value.roadLength + ' km</div> ' +
+                            '</div> ' +
+                            '<div class= "progress" style = "margin-bottom:0;height:0.5rem" > ' +
+                            '<div class= "progress-bar" role = "progressbar" style = "width: ' + pavementPercentage + '%;background-color:' + color[index] + ' " aria-valuenow="' + pavementPercentage + '" aria-valuemin="0" aria-valuemax="100"></div> ' +
+                            '</div> ' +
+                            '<div style = "display:flex;flex-direction:row;justify-content:space-between;align-items:start"> ' +
+                            '<div style="color:' + color[index] +'"> ' +
+                            '% of Paved Length' +
+                            '</div> ' +
+                            '<div style="color:' + color[index] +'"> ' + pavementPercentage + '% </div> ' +
+                            '</div> ' +
+                            '</div> ');
+                    });
+                },
+                error: function () {
+                    alert('Error!');
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: apiBaseUrl + 'api/RoadCountByRoadType',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    let columns = [];
+                    $.each(data, function (i, val) {
+                        columns.push([val.RoadTypeName, val.RoadTypeCount])
+                    })
+                    var chart = setTimeout(() => c3.generate({
+                        bindto: "#roadTypePie",
+                        data: {
+                            // iris data from R
+                            columns: columns,
+                            type: 'pie',
+                        }
+                    }), 1000);
+                },
+                error: function () {
+                    alert('Error!');
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: apiBaseUrl + 'api/RoadCountBySurfaceType',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    let columns = [
+                        ['Flexible Pavement'].concat(data.filter(item => item.surfaceType === "BC").map(item => item.surfaceLength)),
+                        ['Rigid Pavement'].concat(data.filter(item => ["RCC", "CC"].includes(item.surfaceType)).map(item => item.surfaceLength)),
+                        ['Brick Pavement'].concat(data.filter(item => ["HBB", "BFS", "WBM", "UNB"].includes(item.surfaceType)).map(item => item.surfaceLength)),
+                        ['Earthen'].concat(data.filter(item => item.surfaceType === "Ert").map(item => item.surfaceLength)),
+                    ];
+                    var chart = c3.generate({
+                        bindto: "#roadSurfaceTypePie",
+                        data: {
+                            // iris data from R
+                            columns: columns,
+                            type: 'pie',
+                            //onclick: function (d, i) { console.log("onclick", d, i); },
+                            //onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                            //onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                        }
+                    });
+                },
+                error: function () {
+                    alert('Error!');
+                }
+            });
+            
+            $.ajax({
+                type: "GET",
+                url: apiBaseUrl + 'api/trafficcountbyroadtype/index',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    const columns = [];
+                    for (const [key, value] of Object.entries(data)) {
+                        columns.push(data[key])
+                    }
+                    const chart = c3.generate({
+                        bindto: '#trafficComposeNewBarchart',
+                        data: {
+                            x: columns[0][0],
+                            columns: columns,
+                            type: 'bar',
+                        },
+                        bar: {
+                            width: {
+                                ratio: 0.5 // this makes bar width 50% of length between ticks
+                            }
+                            // or
+                            //width: 100 // this makes bar width 100px
+                        },
+                        axis: {
+                            x: {
+                                type: 'category',
+                                tick: {
+                                    rotate: 0,
+                                    multiline: false
+                                },
+                                //categories: data.map(item => item.vehicleName)
+                            },
+                            y: {
+                                label: {
+                                    text: 'Vehicle Count',
+                                    position: 'outer-middle'
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function () {
+                    alert('Error!');
+                }
+            });
+        });
+    </script>
+}
+<!--Script ajax-->
