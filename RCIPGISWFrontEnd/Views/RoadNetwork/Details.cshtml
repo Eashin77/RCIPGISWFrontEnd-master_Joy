@@ -1,4 +1,7 @@
-﻿@{ ViewBag.Title = "Index";
+﻿@model IEnumerable<RCIPGISWFrontEnd.Models.RoadInventory.RoadInventoryModel>
+
+@{
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -356,8 +359,8 @@
                                         <th scope="col">Road Type</th>
                                         <th scope="col">Road Name</th>
                                         <th scope="col">Road Length</th>
-                                        <th scope="col">Crestwidth</th>
-                                        <th scope="col">EMBKHEIGHT</th>
+                                        <th scope="col">Crest Width</th>
+                                        <th scope="col">Embankment Height</th>
                                         @*<th scope="col">Is This Road Important</th>*@
                                         <th scope="col">IRI</th>
                                         <th scope="col">Deflection</th>
@@ -367,10 +370,20 @@
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                @*<tbody id="roadInventory2">
-                                    </tbody>*@
-                                <tbody>
-                                </tbody>
+                               
+                                @if (Model != null) {
+                                    <tbody>
+                                        @foreach (var item in Model) { 
+                                        <tr class=" text-center table-success">
+                                            <td>@Html.DisplayFor(modelItem => item.ROADCODE)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.ROADSLNO)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.ROADID)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.RDTYPECODE)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.ROADNAME)</td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                }
                             </table>
                         </div>
                     </div>
@@ -380,191 +393,4 @@
         </div>
     </div>
 </div>
-
-
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            //modal_tab_Funtion_js_begin
-            function modalProcess() {
-                //alert("in Process");
-                //$(document).ready(function() {
-                $(".tabs").click(function () {
-                    $(".tabs").removeClass("active");
-                    $(".tabs button").addClass("text-muted");
-                    $(this).children("button").removeClass("text-muted");
-                    $(this).addClass("active");
-                    current_fs = $(".active");
-                    next_fs = $(this).attr('id');
-                    next_fs = "#" + next_fs + "1";
-                    //$("fieldset").removeClass("show");
-                    //$(next_fs).addClass("show");
-                    $("fieldset").removeClass("d-block")
-                    $("fieldset").addClass("d-none")
-                    $(next_fs).removeClass("d-none")
-                    $(next_fs).addClass("d-block")
-                    //$("fieldset").hide();
-                    //$(next_fs).show();
-
-                });
-                //});
-            };
-
-            $(".btnModal").click(function () {
-                $("#kt_modal_1").modal("show");
-                modalProcess();
-
-            });
-
-            //modal_tab_funtion_js_end
-
-            var apiBaseUrl = "http://dev.betsbd.com:3015/rsdmsbe/";
-
-            $("#roadInventoryDataTable").DataTable({
-                lengthMenu: [
-                    [20, 25, 50, -1],
-                    [25, 50, 100, 200],
-                ],
-                "ajax":
-                {
-                    "url": apiBaseUrl + 'api/RoadInventory',
-                    "type": "GET",
-                    dataSrc: ''
-                },
-
-                columns: [
-                    { data: 'ROADCODE' },
-                    { data: 'ROADSLNO' },
-                    { data: 'ROADID' },
-                    { data: 'ROADTYPEINFO' },
-                    { data: 'ROADNAME' },
-                    { data: 'ROADLENGTH' },
-                    { data: 'CRESTWIDTH' },
-                    { data: 'EMBKHEIGHT' },
-                    { data: 'IRI' },
-                    { data: 'DEFLECTION' },
-                    { data: 'AADT_MT' },
-                    { data: 'CVD' },
-                    { data: 'SEGMENTSTATUS' },
-                    { data: null }
-                ],
-
-                columnDefs: [{
-                    targets: -1, // Target the last column
-                    data: null, // Use the whole row object as the data source
-                    render: function (data, type, row) {
-
-
-
-                        // Create the button element with a class
-                        return '<button class="btn btn-success opacity-75 btnModal " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">' +
-                            '<i class="fa fa-ellipsis-v"></i>' +
-                            '</button>' +
-                            '<ul class="dropdown dropdown-menu "aria-labelledby="dropdownMenuButton1" style="background-color: #9ad6b7;">' +
-                            '<li><button class="dropdown-item btnModal" id="roadAttribute" data-bs-toggle="modal" data-bs-target="#kt_modal_1" >Road Attributes</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Traffic Survey</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Condition Survey</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Pavement Inventory</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Structure Inventory</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Photo Gallery</a></li>' +
-                            '</ul>';
-
-
-
-                    }
-                }],
-                processing: true,
-                paging: true,
-                ordering: false,
-                info: false,
-                scrollY: 700,
-                scrollX: true,
-                responsive: true,
-
-
-            });
-
-
-            // Function to handle cell click event
-            function handleCellClick() {
-                // Get the row containing the clicked button
-                var row = $(this).closest('tr');
-
-                // Get the value of the third column in the row
-                var roadID = row.find('td:eq(2)').text();
-
-
-
-
-                // Do something with the cell value
-                //console.log('Road Id:', roadID);
-
-                $.ajax({
-                    url: apiBaseUrl + 'api/RoadGeneralInfo/' + roadID,
-                    method: 'GET',
-                    success: function (data) {
-
-                        $('#roadGenInfoRow').empty();
-                        console.log(data);
-                        for (var i = 0; i <= data.length; i++) {
-                            var x = data[i].TOCHAIN;
-                            var y = data[i].FROMCHAIN;
-                            var FROMCHAIN = "";
-                            var result = x - y;
-                            $("#roadGenInfoRow").append(
-                                '<tr class=" text-center table-success">' +
-                                '<td>' + data[i].RDSECSLNO + '</td>' +
-                                '<td>' + data[i].FROMCHAIN + '</td>' +
-                                '<td>' + data[i].TOCHAIN + '</td>' +
-
-                                '<td>' + result + '</td>' +
-
-                                '<td>' +
-                                '<select>' +
-                                '<option>' + data[i].SURFTYPE + '</option>' +
-                                '</select >' +
-                                '</td >' +
-
-                                '<td>' + data[i].AVGCARGW + '</td>' +
-
-                                '<td>' + data[i].AVGSHOULW_L + '</td>' +
-                                '<td>' + data[i].AVGSHOULW_R + '</td>' +
-                                '<td>' +
-                                '<select>' +
-                                '<option>' + data[i].SHOULCON + '</option>' +
-                                '</select >' +
-                                '</td >' +
-                                '<td>' +
-                                '<select>' +
-                                '<option>' + data[i].SLOPECON + '</option>' +
-                                '</select >' +
-                                '</td >' +
-                                '<td>' +
-                                '<button class="btn btn-danger opacity-75 btnModal " type="button" id="Update">' +
-                                '<i class="fas fa-edit"></i>' +
-                                '<i class="fa fa-trash" aria-hidden="true"></i>' +
-                                '</button>' +
-                                '</td>' +
-
-                                '</tr>'
-                            );
-
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        // Handle the error
-                        console.log(error);
-                    }
-                });
-
-            }
-
-            // Event delegation for table cells
-            $('#roadInventoryDataTable').on('click', '#roadAttribute', handleCellClick);
-        });
-
-    </script>
-}
-
-
 

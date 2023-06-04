@@ -45,10 +45,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.6.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.6.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -136,18 +151,95 @@
     <Compile Include="Authorization\CustomAuthorize.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoadNetworkController.cs" />
+    <Compile Include="DatabaseContext\CONTRACTORLIST.cs" />
+    <Compile Include="DatabaseContext\DESIGNATIONLIST.cs" />
+    <Compile Include="DatabaseContext\DevRSDMSDbContext.cs" />
+    <Compile Include="DatabaseContext\FUNDALLOCATION.cs" />
+    <Compile Include="DatabaseContext\FUNDINGSOURCE.cs" />
+    <Compile Include="DatabaseContext\GCSMCOMPLIST.cs" />
+    <Compile Include="DatabaseContext\GCSMDELVPCOMP.cs" />
+    <Compile Include="DatabaseContext\GCSMDELVPHIST.cs" />
+    <Compile Include="DatabaseContext\GCSMLEASEINFO.cs" />
+    <Compile Include="DatabaseContext\GC_SM_LIST.cs" />
+    <Compile Include="DatabaseContext\MARKETTYPE.cs" />
+    <Compile Include="DatabaseContext\MONTHLIST.cs" />
+    <Compile Include="DatabaseContext\PROCUREMETHOD.cs" />
+    <Compile Include="DatabaseContext\RDPRIORCOMPWEIGHT.cs" />
+    <Compile Include="DatabaseContext\RDPRIORCOMPWEIGHT_DEV.cs" />
+    <Compile Include="DatabaseContext\RDSURFACETYPE.cs" />
+    <Compile Include="DatabaseContext\ROADGC_SM_POSITION.cs" />
+    <Compile Include="DatabaseContext\ROADINVENTORY.cs" />
+    <Compile Include="DatabaseContext\ROADMAINTNEED.cs" />
+    <Compile Include="DatabaseContext\ROADMAINTNEEDSEG.cs" />
+    <Compile Include="DatabaseContext\ROADMAINTNEEDSTRUCT.cs" />
+    <Compile Include="DatabaseContext\ROADMAINTNEED_RM.cs" />
+    <Compile Include="DatabaseContext\ROADSEGCOND.cs" />
+    <Compile Include="DatabaseContext\ROADSEGCONST.cs" />
+    <Compile Include="DatabaseContext\ROADSEGDCP.cs" />
+    <Compile Include="DatabaseContext\ROADSEGDEFLECTION.cs" />
+    <Compile Include="DatabaseContext\ROADSEGIRI.cs" />
+    <Compile Include="DatabaseContext\ROADSEGIRI_HIST.cs" />
+    <Compile Include="DatabaseContext\ROADSEGMAINT.cs" />
+    <Compile Include="DatabaseContext\ROADSEGMENT.cs" />
+    <Compile Include="DatabaseContext\ROADSOCIOCONN.cs" />
+    <Compile Include="DatabaseContext\ROADSUMMARY.cs" />
+    <Compile Include="DatabaseContext\ROADSURVEYINFO.cs" />
+    <Compile Include="DatabaseContext\ROADTRAFFICCOUNT.cs" />
+    <Compile Include="DatabaseContext\ROADTRAFFICCOUNT_HIST.cs" />
+    <Compile Include="DatabaseContext\ROADTRAFFIC_HIST.cs" />
+    <Compile Include="DatabaseContext\ROADTREE.cs" />
+    <Compile Include="DatabaseContext\ROADTYPE.cs" />
+    <Compile Include="DatabaseContext\ROADUNIONBREAKUP.cs" />
+    <Compile Include="DatabaseContext\SCHEMELIST.cs" />
+    <Compile Include="DatabaseContext\SCHEMEPROGRESS.cs" />
+    <Compile Include="DatabaseContext\SCHEMEROADSEG.cs" />
+    <Compile Include="DatabaseContext\SCHEMESTRUCTCOMP.cs" />
+    <Compile Include="DatabaseContext\SCHEMESTRUCTURE.cs" />
+    <Compile Include="DatabaseContext\SOCIOCAT.cs" />
+    <Compile Include="DatabaseContext\SOCIOTYPE.cs" />
+    <Compile Include="DatabaseContext\STRCOMPONENTLIST.cs" />
+    <Compile Include="DatabaseContext\STRCONDNONSTRELMT.cs" />
+    <Compile Include="DatabaseContext\STRFOUNDATIONTYPE.cs" />
+    <Compile Include="DatabaseContext\STRMAINTCOMPONENT.cs" />
+    <Compile Include="DatabaseContext\STRRAILINGTYPE.cs" />
+    <Compile Include="DatabaseContext\STRSD_ELEMENT.cs" />
+    <Compile Include="DatabaseContext\STRSD_ELEMENT_MISI_FACTOR.cs" />
+    <Compile Include="DatabaseContext\STRSD_ENV_FACTOR.cs" />
+    <Compile Include="DatabaseContext\STRSD_INSPECTOR_FACTOR.cs" />
+    <Compile Include="DatabaseContext\STRSD_MATERIAL_FACTOR.cs" />
+    <Compile Include="DatabaseContext\STRSUBSTRMATTYPE.cs" />
+    <Compile Include="DatabaseContext\STRUCTINSPECTDETAIL.cs" />
+    <Compile Include="DatabaseContext\STRUCTMAINTCOMP.cs" />
+    <Compile Include="DatabaseContext\STRUCTMAINTENANCE.cs" />
+    <Compile Include="DatabaseContext\STRUCTUREINVENTORY.cs" />
+    <Compile Include="DatabaseContext\STRUCTURETYPE.cs" />
+    <Compile Include="DatabaseContext\STRWEARSURFTYPE.cs" />
+    <Compile Include="DatabaseContext\SUPERVISORLIST.cs" />
+    <Compile Include="DatabaseContext\SUPERVISORUNION.cs" />
+    <Compile Include="DatabaseContext\TREETYPE.cs" />
+    <Compile Include="DatabaseContext\UNIONDELVPCOMP.cs" />
+    <Compile Include="DatabaseContext\UNIONDELVPHIST.cs" />
+    <Compile Include="DatabaseContext\UNIONLIST.cs" />
+    <Compile Include="DatabaseContext\UPCOMPLIST.cs" />
+    <Compile Include="DatabaseContext\VEHICLELIST.cs" />
+    <Compile Include="DatabaseContext\VEHICLETYPE.cs" />
+    <Compile Include="DatabaseContext\VEHIMONTHLYMULT.cs" />
+    <Compile Include="DatabaseContext\WORKTYPE.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Permissions.cs" />
+    <Compile Include="Models\RoadInventory\RoadInventoryModel.cs" />
     <Compile Include="Models\Upazila.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserLocation.cs" />
     <Compile Include="Models\UserOffice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\WebRoleProvider.cs" />
+    <Compile Include="Repositories\RoadBasicInformation\IRoadBasicInformation.cs" />
+    <Compile Include="Repositories\RoadBasicInformation\RoadBasicInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\style.bundle.css" />
@@ -4398,6 +4490,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\RoadNetwork\Index.cshtml" />
+    <Content Include="Views\RoadNetwork\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4414,6 +4507,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
