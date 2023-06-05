@@ -7,58 +7,6 @@
     Modal tabs
 </button>
 <div class="container-fluid">
-    <div class="card card-custom`">
-        <div class="card-body">
-            <div class="modal fade" tabindex="-1" id="kt_modal_1">
-                <div class="modal-dialog modal-lg " style="min-width:fit-content;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Road Attribute Informations</h3>
-
-
-                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-                                <span class="svg-icon svg-icon-1"></span>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-body ">
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/roadAttributeInfos.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/modalTabs.cshtml")
-                            <br>
-                            <hr>
-
-                            <button class="btn btn-success" id="addRow" style="margin-bottom: 5px;">Add New Record</button>
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/RoadGeneralInfoModal/generalInfoModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/SegmentWiseConditionModal/segmentWiseConditionModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/ConstructionModal/constructionModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/MaintainanceModal/maintainanceModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/UnionWiseBreakupModal/unionWiseBreakupModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/ConstituencyWiseBreakupModal/constituencyWiseBreakupModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/GCRMConditionModal/gcRmConditionModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/SocioConnectivityModal/socioConnectivityModal.cshtml")
-
-                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/TreeModal/treeModal.cshtml")                                                                                                                                                                                   
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="content " id="kt_content">
         <!--end::Toolbar-->
         <div class="post" id="kt_post">
@@ -73,38 +21,65 @@
                             </h3>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive-xxl">
-                            <table class="display  nowrap" id="roadInventoryDataTable">
-                                <thead id="roadInventory">
-                                    <tr class="table-info">
-                                        <th scope="col">Road Code</th>
-                                        <th scope="col">Road Sl No</th>
-                                        <th scope="col">Road Id</th>
-                                        <th scope="col">Road Type</th>
-                                        <th scope="col">Road Name</th>
-                                        <th scope="col">Road Length</th>
-                                        <th scope="col">Crestwidth</th>
-                                        <th scope="col">EMBKHEIGHT</th>
-                                        @*<th scope="col">Is This Road Important</th>*@
-                                        <th scope="col">IRI</th>
-                                        <th scope="col">Deflection</th>
-                                        <th scope="col">AADT</th>
-                                        <th scope="col">CVD</th>
-                                        <th scope="col">Segment Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                @*<tbody id="roadInventory2">
-                                    </tbody>*@
-                            </table>
-                        </div>
-                    </div>
+                    @Html.Partial("~/Views/Shared/RoadBasicInformation/roadBasicInformation.cshtml")
                 </div>
                 <br />
             </div>
         </div>
     </div>
+
+    <div class="card card-custom`">
+        <div class="card-body">
+            <div class="modal fade" tabindex="-1" id="kt_modal_1">
+                <div class="modal-dialog modal-lg " style="min-width:fit-content;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Road Attribute Informations</h3>
+
+
+                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                <span class="svg-icon svg-icon-1"></span>
+                            </div>
+
+                        </div>
+                        <div class="modal-body ">
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/roadAttributeInfos.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/modalTabs.cshtml")
+                            <br>
+                            <hr>
+
+                            <button class="btn btn-success" id="addRow" style="margin-bottom: 5px;">Add New Record</button>
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/RoadGeneralInfoModal/generalInfoModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/SegmentWiseConditionModal/segmentWiseConditionModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/ConstructionModal/constructionModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/MaintainanceModal/maintainanceModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/UnionWiseBreakupModal/unionWiseBreakupModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/ConstituencyWiseBreakupModal/constituencyWiseBreakupModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/GCRMConditionModal/gcRmConditionModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/SocioConnectivityModal/socioConnectivityModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/TreeModal/treeModal.cshtml")
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 
