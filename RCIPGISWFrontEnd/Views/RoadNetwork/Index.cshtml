@@ -15,303 +15,39 @@
                         <div class="modal-header">
                             <h3 class="modal-title">Road Attribute Informations</h3>
 
-                            <!--begin::Close-->
+
                             <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                                 <span class="svg-icon svg-icon-1"></span>
                             </div>
-                            <!--end::Close-->
+
                         </div>
 
                         <div class="modal-body ">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th style="border: none;"><b>District:</b></th>
-                                        <th rowspan="2" style="border: none;"><b>Upazila:</b></th>
-                                        <th rowspan="2" style="border: none;"><b>Road Type:</b></th>
-                                        <th style="border: none;"><b>Road ID:</b></th>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/roadAttributeInfos.cshtml")
 
-                                    </tr>
-                                    <tr>
-                                        <th style="border: none;"><b>Road Name:</b></th>
-                                        <th style="border: none;"><b>Road Length:</b></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="roadattributeinfo">
-                                </tbody>
-                            </table>
-
-                            <ul class="nav nav-tabs">
-                                <li class="tabs active" id="tab01">
-                                    <button class="btn btn-primary-outlined">General</button>
-                                </li>
-                                <li class="tabs active" id="tab02">
-                                    <button class="btn btn-primary-outlined">Segment Wise Condition</button>
-                                </li>
-                                <li class="tabs" id="tab03">
-                                    <button class="btn btn-primary-outlined text-muted">Construction</button>
-                                </li>
-                                <li class="tabs" id="tab04">
-                                    <button class="btn btn-primary-outlined text-muted">Maintenance</button>
-                                </li>
-                                <li class="tabs" id="tab05">
-                                    <button class="btn btn-primary-outlined text-muted">Union-wise Breakup</button>
-                                </li>
-                                <li class="tabs" id="tab06">
-                                    <button class="btn btn-primary-outlined text-muted">Constituency-wise Breakup</button>
-                                </li>
-                                <li class="tabs" id="tab07">
-                                    <button class="btn btn-primary-outlined text-muted">GC/RM Condition</button>
-                                </li>
-                                <li class="tabs" id="tab08">
-                                    <button class="btn btn-primary-outlined text-muted">Socio Connectivity</button>
-                                </li>
-                                <li class="tabs" id="tab09">
-                                    <button class="btn btn-primary-outlined text-muted">Tree</button>
-                                </li>
-                            </ul>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/modalTabs.cshtml")
                             <br>
                             <hr>
+
                             <button class="btn btn-success" id="addRow" style="margin-bottom: 5px;">Add New Record</button>
-                            <fieldset class="d-block" id="tab011">
-                                <div class="bg-light">
-                                    <table class="table table-bordered table-striped " id="roadGenInfo">
-                                        <thead class="text-center  table-warning" id="roadGenInfoHead">
-                                            <tr>
-                                                <th><b>Segment Si No</b></th>
-                                                <th colspan="2"><b>Chainage</b></th>
-                                                <th><b>Segment Length</b></th>
-                                                <th><b>Surface Type</b></th>
-                                                <th colspan="3"><b>Average Width</b></th>
-                                                <th colspan="2"><b>Condition</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th></th>
-                                                <th><b>From:</b></th>
-                                                <th><b>To:</b></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th><b>Chainage</b></th>
-                                                <th><b>Shoulder(left)</b></th>
-                                                <th><b>Shoulder(Right)</b></th>
-                                                <th><b>Shoulder</b></th>
-                                                <th><b>Slope</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="roadGenInfoRow">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab021">
-                                <div class="bg-light">
-                                    <table class="text-center table-responsive table-warning table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th rowspan="3"><b>Segment Serial No</b></th>
-                                                <th colspan="2"><b>Chainage</b></th>
-                                                <th rowspan="3"><b>Segment Length <br />( m )</b></th>
-                                                <th rowspan="3"><b>Segment Surface Type</b></th>
-                                                <th colspan="13"><b>Rapid Road Condition Survey (Carriageway)</b></th>
-                                                <th colspan="6"><b>Rapid Road Condition Survey (Road Side)</b></th>
-                                                <th rowspan="3"><b>Remarks</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="2"><b>From</b></th>
-                                                <th rowspan="2"><b>To</b></th>
-                                                <th colspan="2"><b>Pothole Area (sqm)</b></th>
-                                                <th colspan="2"><b>Crack Area (sqm)</b></th>
-                                                <th colspan="2"><b>Depression Area (sqm)</b></th>
-                                                <th colspan="2"><b>Edge Failure Area </b></th>
-                                                <th colspan="2"><b>Ravelled Area (sqm)</b></th>
-                                                <th><b>Depth of Rutting</b></th>
-                                                <th colspan="2"><b>Rutting Area</b> </th>
-                                                <th colspan="2"><b>H/Shoulder, Loss of Material (cum)</b></th>
-                                                <th colspan="2"><b>Low Earth Shoulder (cum)</b></th>
-                                                <th colspan="2"><b>Protection Work (m)</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>mm</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                                <th><b>Low</b></th>
-                                                <th><b>High</b></th>
-                                            </tr>
-                                        </thead>
 
-                                        <tbody id="segmentwiseCondition">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/RoadGeneralInfoModal/generalInfoModal.cshtml")
 
-                            <fieldset class="d-none" id="tab031">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/SegmentWiseConditionModal/segmentWiseConditionModal.cshtml")
 
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"> <b>Segment Serial<br> Number</b></th>
-                                                <th colspan="2" rowspan="1" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Length(m)</b></th>
-                                                <th colspan="5" rowspan="1" scope="colgroup"><b>Construction Operation</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Remarks</b></th>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/ConstructionModal/constructionModal.cshtml")
 
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/MaintainanceModal/maintainanceModal.cshtml")
 
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><b>From</b></th>
-                                                <th scope="col"><b>To</b></th>
-                                                <th scope="col"><b>Year</b></th>
-                                                <th scope="col"><b>Surface Type</b></th>
-                                                <th scope="col" style="width: 10%;"><b>Const. Type</b></th>
-                                                <th scope="col"><b>Cost(Lac Taka)</b></th>
-                                                <th scope="col"><b>Source of Fund</b></th>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/UnionWiseBreakupModal/unionWiseBreakupModal.cshtml")
 
-                                            </tr>
-                                        </thead>
-                                        <tbody id="construction">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab041">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/ConstituencyWiseBreakupModal/constituencyWiseBreakupModal.cshtml")
 
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Serial<br> Number</b></th>
-                                                <th colspan="2" rowspan="1" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Length(m)</b></th>
-                                                <th colspan="5" rowspan="1" scope="colgroup"><b>Last Maintenance Operation(s)</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Remarks</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><b>From</b></th>
-                                                <th scope="col"><b>To</b></th>
-                                                <th scope="col"><b>Year</b></th>
-                                                <th scope="col"><b>Maint. Type</b></th>
-                                                <th scope="col"><b>Top Surface<br> Thikness(mm)</b></th>
-                                                <th scope="col"><b>Cost(Lac Taka)</b></th>
-                                                <th scope="col"><b>Source of Fund</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="maintainance">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab051">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/GCRMConditionModal/gcRmConditionModal.cshtml")
 
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Serial Number</b></th>
-                                                <th colspan="2" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Length(m)</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Name of Union<br>/Pourasava</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Union HQ</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><b>From</b></th>
-                                                <th scope="col"><b>To</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="unionwisebreakup">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab061">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-hover table-warning" style="max-width: 90%;">
-                                        <thead>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/SocioConnectivityModal/socioConnectivityModal.cshtml")
 
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Seg. Sl No</b></th>
-                                                <th colspan="2" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Name of Constituency</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="1" scope="col"><b>From</b></th>
-                                                <th rowspan="1" scope="col"><b>To</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="constituencybreakup">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab071">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning" style="max-width: 80%;">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Name of Growth Center/<br> Rural Market</b></th>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Type</b></th>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Situated at<br>(Chainage)</b></th>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Action</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="GcRmCondition">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab081">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning" style="max-width: 80%">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="1" scope="col" style="width: 30%;"><b>Social Infrastructure<br> Type</b></th>
-                                                <th colspan="1" scope="col"><b>Social Infrastructure<br> Name</b></th>
-                                                <th colspan="1" scope="col"><b>Situated at<br>(Chainage)</b></th>
-                                                <th colspan="1" scope="col"><b>Action</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="socioConnectivity">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab091">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="1" scope="col"><b>Type of Tree</b></th>
-                                                <th colspan="1" scope="col"><b>No of Tree<br>(Left Side)</b></th>
-                                                <th colspan="1" scope="col"><b>No of Tree<br>(Right Side)</b></th>
-                                                <th colspan="1" scope="col"><b>No of Tree(total)</b></th>
-                                                <th colspan="1" scope="col"><b>Year of<br> Plantation</b></th>
-                                                <th colspan="1" scop="col"><b>Action</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
+                            @Html.Partial("~/Views/Shared/Modals/RoadAttributeModal/TreeModal/treeModal.cshtml")                                                                                                                                                                                   
                         </div>
 
                         <div class="modal-footer">
