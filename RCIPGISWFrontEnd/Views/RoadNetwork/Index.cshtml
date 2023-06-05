@@ -21,7 +21,33 @@
                             </h3>
                         </div>
                     </div>
-                    @Html.Partial("~/Views/Shared/RoadBasicInformation/roadBasicInformation.cshtml")
+                    <div class="card-body">
+                        <div class="table-responsive-xxl">
+                            <table class="display  nowrap" id="roadInventoryDataTable">
+                                <thead id="roadInventory">
+                                    <tr class="table-info">
+                                        <th scope="col">Road Code</th>
+                                        <th scope="col">Road Sl No</th>
+                                        <th scope="col">Road Id</th>
+                                        <th scope="col">Road Type</th>
+                                        <th scope="col">Road Name</th>
+                                        <th scope="col">Road Length</th>
+                                        <th scope="col">Crestwidth</th>
+                                        <th scope="col">EMBKHEIGHT</th>
+                                        @*<th scope="col">Is This Road Important</th>*@
+                                        <th scope="col">IRI</th>
+                                        <th scope="col">Deflection</th>
+                                        <th scope="col">AADT</th>
+                                        <th scope="col">CVD</th>
+                                        <th scope="col">Segment Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                @*<tbody id="roadInventory2">
+                                    </tbody>*@
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <br />
             </div>
@@ -33,10 +59,9 @@
             <div class="modal fade" tabindex="-1" id="kt_modal_1">
                 <div class="modal-dialog modal-lg " style="min-width:fit-content;">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Road Attribute Informations</h3>
-
-
+                        <div class="modal-header bg-active-info" >
+                            <h3 class="modal-title">
+                                <i class="fa fa-road" aria-hidden="true"></i>  Road Attribute Informations</h3>
                             <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                                 <span class="svg-icon svg-icon-1"></span>
                             </div>
@@ -53,7 +78,7 @@
 
                             @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/RoadGeneralInfoModal/generalInfoModal.cshtml")
 
-                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/SegmentWiseConditionModal/segmentWiseConditionModal.cshtml")
+                            @*@Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/SegmentWiseConditionModal/segmentWiseConditionModal.cshtml")*@
 
                             @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/ConstructionModal/constructionModal.cshtml")
 
