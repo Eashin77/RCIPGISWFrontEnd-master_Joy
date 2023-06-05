@@ -6,331 +6,6 @@
     Modal tabs
 </button>
 <div class="container-fluid">
-    <div class="card card-custom`">
-        <div class="card-body">
-            <div class="modal fade" tabindex="-1" id="kt_modal_1">
-                <div class="modal-dialog modal-lg " style="min-width:fit-content;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Road Attribute Informations</h3>
-
-                            <!--begin::Close-->
-                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-                                <span class="svg-icon svg-icon-1"></span>
-                            </div>
-                            <!--end::Close-->
-                        </div>
-
-                        <div class="modal-body ">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th style="border: none;"><b>District:</b></th>
-                                        <th rowspan="2" style="border: none;"><b>Upazila:</b></th>
-                                        <th rowspan="2" style="border: none;"><b>Road Type:</b></th>
-                                        <th style="border: none;"><b>Road ID:</b></th>
-
-                                    </tr>
-                                    <tr>
-                                        <th style="border: none;"><b>Road Name:</b></th>
-                                        <th style="border: none;"><b>Road Length:</b></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="roadattributeinfo">
-                                </tbody>
-                            </table>
-
-                            <ul class="nav nav-tabs">
-                                <li class="tabs active" id="tab01">
-                                    <button class="btn btn-primary-outlined">General</button>
-                                </li>
-                                <li class="tabs" id="tab03">
-                                    <button class="btn btn-primary-outlined text-muted">Construction</button>
-                                </li>
-                                <li class="tabs" id="tab04">
-                                    <button class="btn btn-primary-outlined text-muted">Maintenance</button>
-                                </li>
-                                <li class="tabs" id="tab05">
-                                    <button class="btn btn-primary-outlined text-muted">Union-wise Breakup</button>
-                                </li>
-                                <li class="tabs" id="tab02">
-                                    <button class="btn btn-primary-outlined text-muted">Constituency-wise Breakup</button>
-                                </li>
-                                <li class="tabs" id="tab06">
-                                    <button class="btn btn-primary-outlined text-muted">GC/RM Condition</button>
-                                </li>
-                                <li class="tabs" id="tab07">
-                                    <button class="btn btn-primary-outlined text-muted">Socio Connectivity</button>
-                                </li>
-                                <li class="tabs" id="tab08">
-                                    <button class="btn btn-primary-outlined text-muted">Tree</button>
-                                </li>
-                            </ul>
-                            <br>
-                            <hr>
-                            <button class="btn btn-success" id="addRow" style="margin-bottom: 5px;">Add New Record</button>
-                            <fieldset class="d-block" id="tab011">
-                                <div class="bg-light">
-                                    <table class="table table-bordered table-striped " id="roadGenInfo">
-                                        <thead class="text-center  table-warning" id="roadGenInfoHead">
-                                            <tr>
-                                                <th><b>Segment Si No</b></th>
-                                                <th colspan="2"><b>Chainage</b></th>
-                                                <th><b>Segment Length</b></th>
-                                                <th><b>Surface Type</b></th>
-                                                <th colspan="3"><b>Average Width</b></th>
-                                                <th colspan="2"><b>Condition</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th></th>
-                                                <th><b>From:</b></th>
-                                                <th><b>To:</b></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th><b>Chainage</b></th>
-                                                <th><b>Shoulder(left)</b></th>
-                                                <th><b>Shoulder(Right)</b></th>
-                                                <th><b>Shoulder</b></th>
-                                                <th><b>Slope</b></th>
-
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody id="roadGenInfoRow">
-
-                                            <tr class=" text-center table-success">
-
-                                                <td> x</td>
-
-                                                <td>x</td>
-
-                                                <td>x</td>
-
-
-                                                <td>x</td>
-
-
-                                                <td>
-
-                                                    <select>
-
-
-                                                        <option>x</option>
-
-                                                    </select>
-
-                                                </td>
-
-
-                                                <td>x</td>
-
-
-                                                <td>x</td>
-
-                                                <td>x</td>
-
-                                                <td>
-
-                                                    <select>
-
-
-                                                        <option>x</option>
-
-                                                    </select>
-
-                                                </td>
-
-                                                <td>
-
-                                                    <select>
-
-
-                                                        <option>x</option>
-
-                                                    </select>
-
-                                                </td>
-
-                                                <td>
-                                                    <button class="btn btn-success opacity-75 btnModal " type="button" id="edit">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <button class="btn btn-danger opacity-75 btnModal " type="button" id="delete">
-                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                    </button>
-                                                </td>
-
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab031">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
-
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"> <b>Segment Serial<br> Number</b></th>
-                                                <th colspan="2" rowspan="1" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Length(m)</b></th>
-                                                <th colspan="5" rowspan="1" scope="colgroup"><b>Construction Operation</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Remarks</b></th>
-
-
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><b>From</b></th>
-                                                <th scope="col"><b>To</b></th>
-                                                <th scope="col"><b>Year</b></th>
-                                                <th scope="col"><b>Surface Type</b></th>
-                                                <th scope="col" style="width: 10%;"><b>Const. Type</b></th>
-                                                <th scope="col"><b>Cost(Lac Taka)</b></th>
-                                                <th scope="col"><b>Source of Fund</b></th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody id="construction">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab041">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
-
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Serial<br> Number</b></th>
-                                                <th colspan="2" rowspan="1" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Length(m)</b></th>
-                                                <th colspan="5" rowspan="1" scope="colgroup"><b>Last Maintenance Operation(s)</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Remarks</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><b>From</b></th>
-                                                <th scope="col"><b>To</b></th>
-                                                <th scope="col"><b>Year</b></th>
-                                                <th scope="col"><b>Maint. Type</b></th>
-                                                <th scope="col"><b>Top Surface<br> Thikness(mm)</b></th>
-                                                <th scope="col"><b>Cost(Lac Taka)</b></th>
-                                                <th scope="col"><b>Source of Fund</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="maintainance">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab051">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
-
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Serial Number</b></th>
-                                                <th colspan="2" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Segment Length(m)</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Name of Union<br>/Pourasava</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Union HQ</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><b>From</b></th>
-                                                <th scope="col"><b>To</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="unionwisebreakup">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab021">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-hover table-warning" style="max-width: 90%;">
-                                        <thead>
-
-                                            <tr style="text-align: center;">
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Seg. Sl No</b></th>
-                                                <th colspan="2" scope="colgroup"><b>Chainage</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Name of Constituency</b></th>
-                                                <th colspan="1" rowspan="2" scope="colgroup"><b>Action</b></th>
-                                            </tr>
-                                            <tr>
-                                                <th rowspan="1" scope="col"><b>From</b></th>
-                                                <th rowspan="1" scope="col"><b>To</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="constituencybreakup">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab061">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning" style="max-width: 80%;">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Name of Growth Center/<br> Rural Market</b></th>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Type</b></th>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Situated at<br>(Chainage)</b></th>
-                                                <th colspan="1" scope="col" style="width: 15%;"><b>Action</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="GcRmCondition">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab071">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning" style="max-width: 80%">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="1" scope="col" style="width: 30%;"><b>Social Infrastructure<br> Type</b></th>
-                                                <th colspan="1" scope="col"><b>Social Infrastructure<br> Name</b></th>
-                                                <th colspan="1" scope="col"><b>Situated at<br>(Chainage)</b></th>
-                                                <th colspan="1" scope="col"><b>Action</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="socioConnectivity">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                            <fieldset class="d-none" id="tab081">
-                                <div class="bg-light">
-                                    <table class="table table-sm table-bordered table-warning">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="1" scope="col"><b>Type of Tree</b></th>
-                                                <th colspan="1" scope="col"><b>No of Tree<br>(Left Side)</b></th>
-                                                <th colspan="1" scope="col"><b>No of Tree<br>(Right Side)</b></th>
-                                                <th colspan="1" scope="col"><b>No of Tree(total)</b></th>
-                                                <th colspan="1" scope="col"><b>Year of<br> Plantation</b></th>
-                                                <th colspan="1" scop="col"><b>Action</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="content " id="kt_content">
         <!--end::Toolbar-->
         <div class="post" id="kt_post">
@@ -345,40 +20,65 @@
                             </h3>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive-xxl">
-                            <table class="display  nowrap" id="roadInventoryDataTable">
-                                <thead id="roadInventory">
-                                    <tr class="table-info">
-                                        <th scope="col">Road Code</th>
-                                        <th scope="col">Road Sl No</th>
-                                        <th scope="col">Road Id</th>
-                                        <th scope="col">Road Type</th>
-                                        <th scope="col">Road Name</th>
-                                        <th scope="col">Road Length</th>
-                                        <th scope="col">Crestwidth</th>
-                                        <th scope="col">EMBKHEIGHT</th>
-                                        @*<th scope="col">Is This Road Important</th>*@
-                                        <th scope="col">IRI</th>
-                                        <th scope="col">Deflection</th>
-                                        <th scope="col">AADT</th>
-                                        <th scope="col">CVD</th>
-                                        <th scope="col">Segment Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                @*<tbody id="roadInventory2">
-                                    </tbody>*@
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    @Html.Partial("~/Views/Shared/RoadBasicInformation/roadBasicInformation.cshtml")
                 </div>
                 <br />
             </div>
         </div>
     </div>
+
+    <div class="card card-custom`">
+        <div class="card-body">
+            <div class="modal fade" tabindex="-1" id="kt_modal_1">
+                <div class="modal-dialog modal-lg " style="min-width:fit-content;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Road Attribute Informations</h3>
+
+
+                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                <span class="svg-icon svg-icon-1"></span>
+                            </div>
+
+                        </div>
+                        <div class="modal-body ">
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/roadAttributeInfos.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/modalTabs.cshtml")
+                            <br>
+                            <hr>
+
+                            <button class="btn btn-success" id="addRow" style="margin-bottom: 5px;">Add New Record</button>
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/RoadGeneralInfoModal/generalInfoModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/SegmentWiseConditionModal/segmentWiseConditionModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/ConstructionModal/constructionModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/MaintainanceModal/maintainanceModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/UnionWiseBreakupModal/unionWiseBreakupModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/ConstituencyWiseBreakupModal/constituencyWiseBreakupModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/GCRMConditionModal/gcRmConditionModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/SocioConnectivityModal/socioConnectivityModal.cshtml")
+
+                            @Html.Partial("~/Views/Shared/RoadBasicInformation/Modals/RoadAttributeModal/TreeModal/treeModal.cshtml")
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 
@@ -461,7 +161,7 @@
                             '<i class="fa fa-ellipsis-v"></i>' +
                             '</button>' +
                             '<ul class="dropdown dropdown-menu "aria-labelledby="dropdownMenuButton1" style="background-color: #9ad6b7;">' +
-                            '<li><button class="dropdown-item btnModal" id="roadAttribute" data-bs-toggle="modal" data-bs-target="#kt_modal_1" >Road Attributes</a></li>' +
+                            '<li><button class="dropdown-item " id="roadAttribute" data-bs-toggle="modal" data-bs-target="#kt_modal_1" >Road Attributes</a></li>' +
                             '<li><a class="dropdown-item" href="#">Traffic Survey</a></li>' +
                             '<li><a class="dropdown-item" href="#">Condition Survey</a></li>' +
                             '<li><a class="dropdown-item" href="#">Pavement Inventory</a></li>' +

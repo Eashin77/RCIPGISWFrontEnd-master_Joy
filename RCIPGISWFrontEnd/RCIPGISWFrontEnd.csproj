@@ -4490,7 +4490,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\RoadNetwork\Index.cshtml" />
-    <Content Include="Views\RoadNetwork\Details.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\roadAttributeInfos.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\modalTabs.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\RoadGeneralInfoModal\generalInfoModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\SegmentWiseConditionModal\segmentWiseConditionModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\ConstructionModal\constructionModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\ConstituencyWiseBreakupModal\constituencyWiseBreakupModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\GCRMConditionModal\gcRmConditionModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\SocioConnectivityModal\socioConnectivityModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\TreeModal\treeModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\UnionWiseBreakupModal\unionWiseBreakupModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\Modals\RoadAttributeModal\MaintainanceModal\maintainanceModal.cshtml" />
+    <Content Include="Views\Shared\RoadBasicInformation\roadBasicInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
