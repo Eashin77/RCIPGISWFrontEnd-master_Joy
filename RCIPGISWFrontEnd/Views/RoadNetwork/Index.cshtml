@@ -145,19 +145,43 @@
             //modal_tab_funtion_js_end
 
             var apiBaseUrl = "http://dev.betsbd.com:3015/rsdmsbe/";
+            var pageNumber = 1;
+            var pageSize = 10;
+            //$.ajax({
+            //    url: apiBaseUrl + 'api/RoadInventory/Paginated?pageNumber=' + pageNumber + '&' + pageSize,
+            //    method: 'GET',
+            //    success: function (data) {
+            //        console.log(data);
 
+            //    }
+
+
+            //});
             $("#roadInventoryDataTable").DataTable({
+                
+                language: {
+                    paginate: {
+                        previous: 'Previous',
+                        next: 'Next'
+                    },
+                    aria: {
+                        paginate: {
+                            previous: 'Previous',
+                            next: 'Next'
+                        }
+                    }
+                },
                 lengthMenu: [
-                    [20, 25, 50, -1],
-                    [25, 50, 100, 200],
+                    [20, 25, 50, -1], 
+                    [10,25, 50, 100, 200],
                 ],
                 "ajax":
                 {
-                    "url": apiBaseUrl + 'api/RoadInventory',
+                    "url": apiBaseUrl + 'api/RoadInventory/Paginated?pageNumber=' + pageNumber +'&pageSize='+ pageSize,   
                     "type": "GET",
-                    dataSrc: ''
+                    dataSrc: '',
                 },
-
+                
                 columns: [
                     { data: 'ROADCODE' },
                     { data: 'ROADSLNO' },
@@ -179,9 +203,6 @@
                     targets: -1, // Target the last column
                     data: null, // Use the whole row object as the data source
                     render: function (data, type, row) {
-
-
-
                         // Create the button element with a class
                         return '<button class="btn btn-success opacity-75 btnModal " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">' +
                             '<i class="fa fa-ellipsis-v"></i>' +
@@ -194,6 +215,7 @@
                             '<li><a class="dropdown-item" href="#">Structure Inventory</a></li>' +
                             '<li><a class="dropdown-item" href="#">Photo Gallery</a></li>' +
                             '</ul>';
+                        
 
 
 
@@ -206,9 +228,11 @@
                 scrollY: 700,
                 scrollX: true,
                 responsive: true,
+                //pagingType: 'full_numbers',
 
 
             });
+           
 
 
             // Function to handle cell click event
@@ -266,7 +290,7 @@
                                 '</select >' +
                                 '</td >' +
                                 '<td>' +
-                                '<button class="btn btn-danger opacity-75 btnModal " type="button" id="Update">' +
+                                '<button class="btn btn-danger opacity-75  " type="button" id="Update">' +
                                 '<i class="fas fa-edit"></i>' +
                                 '<i class="fa fa-trash" aria-hidden="true"></i>' +
                                 '</button>' +
