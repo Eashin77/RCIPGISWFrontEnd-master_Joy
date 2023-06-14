@@ -15,6 +15,7 @@
     <meta property="og:site_name" content="Keenthemes | Metronic" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
     <link rel="shortcut icon" href="@Url.Content("~/assets/media/logos/favicon.ico")" />
+    <link href="@Url.Content("~/Content/layout.css")" rel="stylesheet" type="text/css" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
@@ -135,7 +136,7 @@
                                     <div class="menu-item">
                                         <a class="menu-link" href="@Url.Action("Index", "RoadNetwork")">
                                             <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
+                                                <span class="fa-solid fa-check-circle fa-bounce"></span>
                                             </span>
                                             <span class="menu-title">View Approved Data</span>
                                         </a>
@@ -143,7 +144,7 @@
                                     <div class="menu-item">
                                         <a class="menu-link" href="#">
                                             <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
+                                                <span class="fa-solid fa-dot-circle fa-beat"></span>
                                             </span>
                                             <span class="menu-title">Update Data</span>
                                         </a>
@@ -151,9 +152,9 @@
                                     <div class="menu-item">
                                         <a class="menu-link" href="#">
                                             <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
+                                                <span class="fa-solid fa-chain"></span>
                                             </span>
-                                            <span class="menu-title">Approved Process</span>
+                                            <span class="menu-title">Approval Process</span>
                                         </a>
                                     </div>
 
@@ -217,15 +218,42 @@
                             </div>
                             <!--end::Planning & Analysiss-->
                             <!--begin::Other Infrastructure-->
-                            <div class="menu-item">
-                                <a class="menu-link" href="#">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/layouts/lay010.svg-->
-                                        <i class="fa-solid fa-bridge"></i>
+                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                        <i class="fa-solid fa-building"></i>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Other Infrastructure</span>
-                                </a>
+                                    <span class="menu-title">Other Infrastructures</span>
+                                    <span class="menu-arrow"></span>
+                                </span>
+                                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                    <div class="menu-item">
+                                        <a class="menu-link" href="#">
+                                            <span class="menu-bullet">
+                                                <span class="fa-solid fa-university"></span>
+                                            </span>
+                                            <span class="menu-title">Socio-Economic Infrastructures</span>
+                                        </a>
+                                    </div>
+                                    <div class="menu-item">
+                                        <a class="menu-link" href="#">
+                                            <span class="menu-bullet">
+                                                <span class="fa-solid fa-shop"></span>
+                                            </span>
+                                            <span class="menu-title">GC / RM Inventory</span>
+                                        </a>
+                                    </div>
+                                    <div class="menu-item">
+                                        <a class="menu-link" href="#">
+                                            <span class="menu-bullet">
+                                                <span class="fa-solid fa-building-flag"></span>
+                                            </span>
+                                            <span class="menu-title">UP Complex Inventory</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <!--end::Other Infrastructure-->
                             <!--begin::Reports-->
