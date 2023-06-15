@@ -183,10 +183,9 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            var apiBaseUrl = "http://dev.betsbd.com:3015/rsdmsbe/";
+            var apiBaseUrl = "http://localhost:5010/";
             var userLocation = @Html.Raw(Json.Encode(@ViewBag.UserLocation)); //Accessing the Json Object from ViewBag
             var r = _.keys(_.countBy(userLocation, function (userLocation) { return userLocation.DivisionId; }));
-            console.log(r)
             $.ajax({
                 type: "GET",
                 url: apiBaseUrl + 'api/RoadCountByPaved',
@@ -247,15 +246,16 @@
             });
             $.ajax({
                 type: "GET",
-                url: apiBaseUrl + 'api/RoadCountBySurfaceType',
+                url: apiBaseUrl + 'api/RoadNetworkBySurfaceType',
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
+                    console.log(data.length);
                     let columns = [
-                        ['Flexible Pavement'].concat(data.filter(item => item.surfaceType === "BC").map(item => item.surfaceLength)),
-                        ['Rigid Pavement'].concat(data.filter(item => ["RCC", "CC"].includes(item.surfaceType)).map(item => item.surfaceLength)),
-                        ['Brick Pavement'].concat(data.filter(item => ["HBB", "BFS", "WBM", "UNB"].includes(item.surfaceType)).map(item => item.surfaceLength)),
-                        ['Earthen'].concat(data.filter(item => item.surfaceType === "Ert").map(item => item.surfaceLength)),
+                        ['Flexible Pavement'].concat(data.filter(item => item.surfaceType === "BC").map(item => item.surfacePercentage)),
+                        ['Rigid Pavement'].concat(data.filter(item => ["RCC", "CC"].includes(item.surfaceType)).map(item => item.surfacePercentage)),
+                        ['Brick Pavement'].concat(data.filter(item => ["HBB", "BFS", "WBM", "UNB"].includes(item.surfaceType)).map(item => item.surfacePercentage)),
+                        ['Earthen'].concat(data.filter(item => item.surfaceType === "Ert").map(item => item.surfacePercentage)),
                     ];
                     var chart = c3.generate({
                         bindto: "#roadSurfaceTypePie",
@@ -276,7 +276,7 @@
             
             $.ajax({
                 type: "GET",
-                url: apiBaseUrl + 'api/trafficcountbyroadtype/index',
+                url: apiBaseUrl + 'api/trafficcountbyroadtype',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {

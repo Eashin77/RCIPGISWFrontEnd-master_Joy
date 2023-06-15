@@ -10,7 +10,7 @@ namespace RCIPGISWFrontEnd.DatabaseContext
     public partial class ROADSEGMENT
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public int ROADSEGID { get; set; }
 
         public int? ROADID { get; set; }
