@@ -18,7 +18,19 @@ namespace RCIPGISWFrontEnd.Controllers
             _roadBasicInfo = new RoadBasicInformation();
         }
 
-        // GET: RoadNetwork
+        public ActionResult Index(int pageNumber = 1, int pageSize = 15)
+        {
+            List<RoadInventoryModel> roadInventoryPage = _roadBasicInfo.GetRoadInventoryWithPagination(pageNumber, pageSize);
+            int totalRecords = _roadBasicInfo.GetTotalRecordCount();
+
+            ViewBag.PageNumber = pageNumber;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalRecords = totalRecords;
+
+            return View(roadInventoryPage);
+        }
+
+        // GET: RoadNetworkDetails
         public ActionResult Details(long roadID)
         {
           

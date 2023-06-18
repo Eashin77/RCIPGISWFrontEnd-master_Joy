@@ -1,4 +1,5 @@
-﻿@{ ViewBag.Title = "Index";
+﻿@Model List<RCIPGISWFrontEnd.Models.RoadInventory.RoadInventoryMode>
+@{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -42,8 +43,29 @@
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@item.ROADCODE</td>
+                                        <td>@item.ROADSLNO</td>
+                                        <td>@item.ROADID</td>
+                                        @*<td>@item.ROADTYPE</td>*@
+                                        <td>@item.ROADNAME</td>
+                                        <td>@item.ROADLENGTH</td>
+                                        <td>@item.CRESTWIDTH</td>
+                                        <td>@item.EMBKHEIGHT</td>
+                                        <td>@item.IRI</td>
+                                        <td>@item.DEFLECTION</td>
+                                        <td>@item.AADT_MT</td>
+                                        <td>@item.AADT_NMT</td>
+                                        <td>@item.CVD</td>
+                                        <td>Action button</td>
+                                    </tr>
+                                    }
+                                </tbody>
                                 @*<tbody id="roadInventory2">
-                                    </tbody>*@
+        </tbody>*@
                             </table>
                         </div>
                     </div>
@@ -58,9 +80,10 @@
             <div class="modal fade" tabindex="-1" id="kt_modal_1">
                 <div class="modal-dialog modal-lg " style="min-width:fit-content;">
                     <div class="modal-content">
-                        <div class="modal-header bg-active-info" >
+                        <div class="modal-header bg-active-info">
                             <h3 class="modal-title">
-                                <i class="fa fa-road" aria-hidden="true"></i>  Road Attribute Informations</h3>
+                                <i class="fa fa-road" aria-hidden="true"></i>  Road Attribute Informations
+                            </h3>
                             <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                                 <span class="svg-icon svg-icon-1"></span>
                             </div>
@@ -108,130 +131,115 @@
 
 
 @section Scripts{
-    <script>
-        $(document).ready(function () {
-            //modal_tab_Funtion_js_begin
-            function modalProcess() {
-                //alert("in Process");
-                //$(document).ready(function() {
-                $(".tabs").click(function () {
-                    $(".tabs").removeClass("active");
-                    $(".tabs button").addClass("text-muted");
-                    $(this).children("button").removeClass("text-muted");
-                    $(this).addClass("active");
-                    current_fs = $(".active");
-                    next_fs = $(this).attr('id');
-                    next_fs = "#" + next_fs + "1";
-                    //$("fieldset").removeClass("show");
-                    //$(next_fs).addClass("show");
-                    $("fieldset").removeClass("d-block")
-                    $("fieldset").addClass("d-none")
-                    $(next_fs).removeClass("d-none")
-                    $(next_fs).addClass("d-block")
-                    //$("fieldset").hide();
-                    //$(next_fs).show();
+               <script>
+                   $(document).ready(function () {
 
-                });
-                //});
-            };
+                        //modal_tab_Funtion_js_begin
+                        function modalProcess() {
+                            //alert("in Process");
+                            //$(document).ready(function() {
+                            $(".tabs").click(function () {
+                                $(".tabs").removeClass("active");
+                                $(".tabs button").addClass("text-muted");
+                                $(this).children("button").removeClass("text-muted");
+                                $(this).addClass("active");
+                                current_fs = $(".active");
+                                next_fs = $(this).attr('id');
+                                next_fs = "#" + next_fs + "1";
+                                //$("fieldset").removeClass("show");
+                                //$(next_fs).addClass("show");
+                                $("fieldset").removeClass("d-block")
+                                $("fieldset").addClass("d-none")
+                                $(next_fs).removeClass("d-none")
+                                $(next_fs).addClass("d-block")
+                                //$("fieldset").hide();
+                                //$(next_fs).show();
 
-            $(".btnModal").click(function () {
-                $("#kt_modal_1").modal("show");
-                modalProcess();
+                            });
+                            //});
+                        };
 
-            });
+                        $(".btnModal").click(function () {
+                            $("#kt_modal_1").modal("show");
+                            modalProcess();
 
-            //modal_tab_funtion_js_end
+                        });
 
-            var apiBaseUrl = "http://dev.betsbd.com:3015/rsdmsbe/";
-            var pageNumber = 1;
-            var pageSize = 10;
-            //$.ajax({
-            //    url: apiBaseUrl + 'api/RoadInventory/Paginated?pageNumber=' + pageNumber + '&' + pageSize,
-            //    method: 'GET',
-            //    success: function (data) {
-            //        console.log(data);
+                        //modal_tab_funtion_js_end
 
-            //    }
+                        var totalRecords = @ViewBag.TotalRecords;
+                        var pageNumber = @ViewBag.PageNumber;
+                        var pageSize = @ViewBag.PageSize;
+                        var NumberOfPages = Math.ceil(totalRecords / pageSize);
 
+                        var roadInformation = $("#roadInventoryDataTable").DataTable({
+                            scrollY: 400,
+                            scrollX: true,
+                            paging: true,
+                            lengthMenu: [pageSize, 25, 50, 200],
+                            pageLength: pageSize,
+                            lengthChange: true,
+                            info: true,
+                            infoCallback: function (settings, start, end, max, total, pre) {
+                                console.log('From Info Callback',settings, start, end, max, total, pre);
+                                return 'Showing ' + pageNumber + ' of ' + end + ' Pages';
+                            },
+                            serverSide: true,
+                            ajax: {
+                                url: '@Url.Action("Index", "RoadNetwork")',
+                                type: 'GET',
+                                dataType: 'json',
+                                //data: function (d) {
+                                //    console.log('From  Data',d);
+                                //    //d.pageNumber = (this.page.info().page + 1);
+                                //    //d.pageSize = pageSize;
+                                //},
+                                dataSrc: function (data) {
+                                    // Update total records count
+                                    console.log('From Data Source', data);
+                                    $('.dataTables_info').html('Showing ' + data.recordsFiltered + ' of ' + totalRecords + ' records');
+                                    return data.data;
+                                }
+                            },
+                        });
 
-            //});
-            $("#roadInventoryDataTable").DataTable({
-                
-                language: {
-                    paginate: {
-                        previous: 'Previous',
-                        next: 'Next'
-                    },
-                    aria: {
-                        paginate: {
-                            previous: 'Previous',
-                            next: 'Next'
-                        }
-                    }
-                },
-                lengthMenu: [
-                    [20, 25, 50, -1], 
-                    [10,25, 50, 100, 200],
-                ],
-                "ajax":
-                {
-                    "url": apiBaseUrl + 'api/RoadInventory/Paginated?pageNumber=' + pageNumber +'&pageSize='+ pageSize,   
-                    "type": "GET",
-                    dataSrc: '',
-                },
-                
-                columns: [
-                    { data: 'ROADCODE' },
-                    { data: 'ROADSLNO' },
-                    { data: 'ROADID' },
-                    { data: 'ROADTYPEINFO' },
-                    { data: 'ROADNAME' },
-                    { data: 'ROADLENGTH' },
-                    { data: 'CRESTWIDTH' },
-                    { data: 'EMBKHEIGHT' },
-                    { data: 'IRI' },
-                    { data: 'DEFLECTION' },
-                    { data: 'AADT_MT' },
-                    { data: 'CVD' },
-                    { data: 'SEGMENTSTATUS' },
-                    { data: null }
-                ],
+                       //roadInformation.page.len(pageSize).draw();
 
-                columnDefs: [{
-                    targets: -1, // Target the last column
-                    data: null, // Use the whole row object as the data source
-                    render: function (data, type, row) {
-                        // Create the button element with a class
-                        return '<button class="btn btn-success opacity-75 btnModal " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">' +
-                            '<i class="fa fa-ellipsis-v"></i>' +
-                            '</button>' +
-                            '<ul class="dropdown dropdown-menu "aria-labelledby="dropdownMenuButton1" style="background-color: #9ad6b7;">' +
-                            '<li><button class="dropdown-item " id="roadAttribute" data-bs-toggle="modal" data-bs-target="#kt_modal_1" >Road Attributes</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Traffic Survey</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Condition Survey</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Pavement Inventory</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Structure Inventory</a></li>' +
-                            '<li><a class="dropdown-item" href="#">Photo Gallery</a></li>' +
-                            '</ul>';
-                        
+                       //// Disable or enable the 'Previous' and 'Next' buttons based on the current page
+                       //function updatePaginationButtons() {
+                       //    $('.paginate_button.previous').toggleClass('disabled', pageNumber === 1);
+                       //    $('.paginate_button.next').toggleClass('disabled', pageNumber === numberOfPages);
+                       //}
 
+                       //updatePaginationButtons();
 
+                       //// Handle 'Previous' button click
+                       //$('.paginate_button.previous').on('click', function () {
+                       //    if (currentPage > 1) {
+                       //        currentPage--;
+                       //        table.page(currentPage - 1).draw(false);
+                       //        updatePaginationButtons();
+                       //    }
+                       //});
 
-                    }
-                }],
-                processing: true,
-                paging: true,
-                ordering: false,
-                info: false,
-                scrollY: 700,
-                scrollX: true,
-                responsive: true,
-                //pagingType: 'full_numbers',
+                       //updatePaginationButtons();
 
+                       //// Handle 'Previous' button click
+                       //$('.paginate_button.previous').on('click', function () {
+                       //    if (currentPage > 1) {
+                       //        currentPage--;
+                       //        table.page(currentPage - 1).draw(false);
+                       //        updatePaginationButtons();
+                       //    }
+                       //});
+            @*roadInformation.on('page.dt', function () {
+                console.log("it reaches me");
+                var pageNumber = roadInformation.page.info().page + 1;
+                var pageSize = roadInformation.page.info().length;
+                var url = '@Url.Action("Index", "RoadNetworkController")' + '?pageNumber=' + pageNumber + '&pageSize=' + pageSize;
+                window.location.href = url;
+            });*@
 
-            });
-           
 
 
             // Function to handle cell click event
@@ -312,7 +320,7 @@
             $('#roadInventoryDataTable').on('click', '#roadAttribute', handleCellClick);
         });
 
-    </script>
+               </script>
 }
 
 

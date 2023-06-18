@@ -10,5 +10,7 @@ namespace RCIPGISWFrontEnd.Repositories.RoadBasicInformation
     public interface IRoadBasicInformation
     {
         IEnumerable<RoadInventoryModel> GetRoadInventoryById(long roadID);
+        List<RoadInventoryModel> GetRoadInventoryWithPagination(int pageNumber, int pageSize);
+        int GetTotalRecordCount();
     }
 }
